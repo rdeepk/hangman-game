@@ -14,8 +14,8 @@ let words = [
 	'me'
 ];
 
-let answer; 
-let nWrong; 
+let answer;
+let nWrong;
 let pastGuesses = [];
 let pastGames = [];
 let cont = true;
@@ -43,24 +43,24 @@ function startGame() {
 		*/
 		let match = false;
 		//check if it is in pastguesses else add to it
-		for(var i =0; i < pastGuesses.length; i++) {
-			if(guess === pastGuesses[i]) {
+		for (var i = 0; i < pastGuesses.length; i++) {
+			if (guess === pastGuesses[i]) {
 				console.log('The letter is already guessed ', guess);
 				match = true;
 				break;
 			}
 		}
-		if(!match) {
+		if (!match) {
 			pastGuesses[pastGuesses.length] = guess;
 			let found;
-			for(let i = 0; i < answer.length; i++){
-				if(guess === answer[i]) {
+			for (let i = 0; i < answer.length; i++) {
+				if (guess === answer[i]) {
 					found = true;
 					console.log("You found a relevant number");
 					break;
 				}
 			}
-			if(!found) {
+			if (!found) {
 				console.log("Oops! Incorrect Choice. Please try again");
 				nWrong++;
 			}
@@ -76,30 +76,30 @@ function startGame() {
 	*/
 }
 
-function checkGameOver(){ 
-	if(nWrong > 6) {
+function checkGameOver() {
+	if (nWrong > 6) {
 		console.log("You Lose");
 		return true;
 	}
 	checkInputStatus()
-	if(won) {
+	if (won) {
 		console.log("You Won");
 		return true;
 	}
-	return false; 
+	return false;
 }
 
-function printGameState(){ 
+function printGameState() {
 	//Add a console.log here to print the previous guesses.
 	console.log('\n');
 	let str = checkInputStatus();
-		console.log(str);
-		
+	console.log(str);
+
 	console.log('\n');
-	printHangMan(nWrong);	
+	printHangMan(nWrong);
 	console.log('\n\n');
-	
-	
+
+
 }
 
 
@@ -107,25 +107,24 @@ function checkInputStatus() {
 	let str = "";
 	let counter = 0;
 	// for each letter in the target word
-	for(let i = 0; i < answer.length; i++){
+	for (let i = 0; i < answer.length; i++) {
 		let found = false;
 		// loop through the pastGuesses
-		for(let j = 0; j < pastGuesses.length; j++){
+		for (let j = 0; j < pastGuesses.length; j++) {
 			// and check each element of past guesses to see if it matches the
-			if(answer[i] === pastGuesses[j]){
+			if (answer[i] === pastGuesses[j]) {
 				found = true;
 			}
 		}
-		if(found){
+		if (found) {
 			str += answer[i];
 			str += "\t";
 			counter++;
-		}
-		else{
+		} else {
 			str += "_\t";
 		}
 	}
-	if(counter === answer.length) {
+	if (counter === answer.length) {
 		won = true;
 
 	}
@@ -138,32 +137,32 @@ function checkInputStatus() {
  =========================================================================================
 */
 
-function getRandomWord(){
-	const index = Math.floor(Math.random()*words.length);
+function getRandomWord() {
+	const index = Math.floor(Math.random() * words.length);
 	return words[index];
 }
 
-function printHangMan(nWrong){
+function printHangMan(nWrong) {
 	//Don't worry about the syntax you see here.  The ? operator is a succinct way to write an
 	//if statement that has two results. Think of it as:
 	// statement_that_is_true_or_false ? happens_if_true : (OR) happens_if_false 
 	const headSpot = (nWrong > 0) ? "O" : " ";
 	const bodySpot = (nWrong > 1) ? "|" : " ";
-	const leftArm = (nWrong > 2) ? "/": " ";
+	const leftArm = (nWrong > 2) ? "/" : " ";
 	const rightArm = (nWrong > 3) ? "\\" : " ";
 	const leftLeg = (nWrong > 4) ? "/" : " ";
 	const rightLeg = (nWrong > 5) ? "\\" : " ";
-	
+
 	let str = "";
 	console.log(" ___ ");
 	console.log(" |  | ");
-	console.log(" |  " +  headSpot + " ");
+	console.log(" |  " + headSpot + " ");
 	console.log(" | " + leftArm + bodySpot + rightArm);
 	console.log(" | " + leftLeg + " " + rightLeg);
 	return;
 }
 
-function setUpGame(){
+function setUpGame() {
 	// choose a new word
 	answer = getRandomWord().split('');
 	console.log(answer);
@@ -171,21 +170,19 @@ function setUpGame(){
 	nWrong = 0;
 	won = false;
 	// empty our array of previously guessed letters
-	pastGuesses = []; 
+	pastGuesses = [];
 }
 
 startGame()
 
-while(cont){
+while (cont) {
 	let answer = readlineSync.question('Would you like to play again? y/n')
-	if(answer.toLowerCase() === 'y'){
+	if (answer.toLowerCase() === 'y') {
 		startGame();
-	}
-	else if(answer.toLowerCase() === 'n'){
+	} else if (answer.toLowerCase() === 'n') {
 		cont = false;
 		console.log('Good game!')
-	}
-	else {
+	} else {
 		console.log('Please enter either y (yes) or n (no).')
 	}
 }
