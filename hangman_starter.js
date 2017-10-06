@@ -43,23 +43,20 @@ function startGame() {
 		*/
 		let match = false;
 		//check if it is in pastguesses else add to it
-		for (var i = 0; i < pastGuesses.length; i++) {
-			if (guess === pastGuesses[i]) {
-				console.log('The letter is already guessed ', guess);
-				match = true;
-				break;
-			}
+		if(pastGuesses.indexOf(guess) !== -1) {
+			console.log('The letter is already guessed ', guess);
+			match = true;
 		}
+
 		if (!match) {
 			pastGuesses[pastGuesses.length] = guess;
 			let found;
-			for (let i = 0; i < answer.length; i++) {
-				if (guess === answer[i]) {
-					found = true;
-					console.log("You found a relevant number");
-					break;
-				}
+			
+			if(answer.indexOf(guess) !== -1) {
+				found = true;
+				console.log("You found a relevant number");
 			}
+
 			if (!found) {
 				console.log("Oops! Incorrect Choice. Please try again");
 				nWrong++;
