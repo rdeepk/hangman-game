@@ -20,6 +20,14 @@ let pastGuesses = [];
 let pastGames = [];
 let cont = true;
 let won = false;
+let gameStats = {};
+
+
+function Games(attempts, result, guesses) {
+	this.attempts = attempts;
+	this.result = result;
+	this.guesses = guesses;
+}
 
 /*
 PART 1
@@ -74,16 +82,34 @@ function startGame() {
 }
 
 function checkGameOver() {
-	if (nWrong > 6) {
-		console.log("You Lose");
+	checkInputStatus();
+	gameStats = {
+		'attempts': answer.length + nWrong,
+		'guessedLetters': pastGuesses
+	}
+	if(won){
+		gameStats.result = 'Won';
+	} else {
+		gameStats.result = 'Lost';
+	}
+
+	if ((nWrong > 6) || (won)) {
+		outputResults();
 		return true;
 	}
-	checkInputStatus()
-	if (won) {
-		console.log("You Won");
-		return true;
-	}
+	
 	return false;
+}
+
+function outputResults() {
+	pastGames.push(new Games(gameStats.attempts, gameStats.result, gameStats.guessedLetters));
+	if(won) {
+		console.log("Well Played! You have Won");
+	} else {
+		console.log("You Lost!");
+	}
+	console.log('Your Game statistics: ' + JSON.stringify(gameStats));
+	console.log('Your Past Games: ' + JSON.stringify(pastGames));	
 }
 
 function printGameState() {
@@ -95,8 +121,6 @@ function printGameState() {
 	console.log('\n');
 	printHangMan(nWrong);
 	console.log('\n\n');
-
-
 }
 
 
