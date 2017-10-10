@@ -1,0 +1,22 @@
+body {
+    padding: 100px 0;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.hangman {
+    padding-bottom: 50px;
+}
+
+.answer-string {
+    padding-bottom: 80px;
+}
+
+.letters {
+    padding: 20px 0 50px;
+    font-size: 26px;
+}
+
+.message {
+    padding-bottom: 30px;
+}

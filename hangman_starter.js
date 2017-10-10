@@ -1,7 +1,6 @@
 const readlineSync = require('readline-sync');
 
 // this array holds all the possible words that can be the answer
-// feel free to change the words here to words you find interesting! :)
 
 let words = [
 	'hey',
@@ -186,7 +185,6 @@ function printHangMan(nWrong) {
 function setUpGame() {
 	// choose a new word
 	answer = getRandomWord().split('');
-	console.log(answer);
 	// reset the total of wrong guesses
 	nWrong = 0;
 	won = false;
