@@ -237,7 +237,7 @@ function setUpGame() {
     pastGuesses = [];
 }
 
-startGame()
+startGame();
 
 while (cont) {
     let answer = readlineSync.question('Would you like to play again? y/n')

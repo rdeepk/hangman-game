@@ -28,7 +28,7 @@ function Games(attempts, result, guesses, won) {
     this.attempts = attempts;
     this.result = result;
     this.guesses = guesses;
-    }
+}
 
 /**
  * @summary Events to trigger when document is ready.
@@ -53,7 +53,6 @@ $(function () {
         }
         $('.letters').html(values);
     }
-
 })
 
 
@@ -132,6 +131,9 @@ function setUpGame() {
         "color": "#007bff"
     });
     $('.message').html("");
+    $('.guesses').css({
+        "display": "none"
+    });
 }
 
 
@@ -223,13 +225,13 @@ function checkGameOver() {
 function outputResults() {
     pastGames.push(new Games(gameStats.attempts, gameStats.result, gameStats.guessedLetters));
     if (won) {
-        $('.message').html("Well Played! You have Won");
+        $('.message').html("Well played! You have won");
         $('.message').css({
             "color": "green"
         });
         wonCount++;
     } else {
-        $('.message').html("Sorry, You have been hanged! The answer was<br>" + answer.join("").toUpperCase());
+        $('.message').html("Sorry, you have been hanged! The answer was<br>" + answer.join("").toUpperCase());
         $('.message').css({
             "color": "red"
         });
@@ -237,7 +239,14 @@ function outputResults() {
     }
     console.log('Your Game statistics: ' + JSON.stringify(gameStats));
     console.log('Your Past Games: ' + JSON.stringify(pastGames));
-    $('.played').html("Played:: " + pastGames.length);
+    $('.pipe').css({
+        "display": "inline"
+    });
+    $('.guesses').css({
+        "display": "block"
+    });
+    $('.played').html("Played: " + pastGames.length);
     $('.won').html("Won: " + wonCount);
     $('.lost').html("Lost: " + lostCount);
+    $('.guesses').html("Letters Guessed: " + pastGuesses);
 }

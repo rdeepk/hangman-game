@@ -31,3 +31,8 @@ h1 {
 .message {
     padding-bottom: 30px;
 }
+
+.pipe {
+    margin: 0 10px;
+    display: none;
+}
