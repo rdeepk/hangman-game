@@ -20,6 +20,10 @@ let guess;
 let wonCount = 0, lostCount = 0;
 let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+
+/**
+ * @summary Constructor function to create game object
+ */
 function Games(attempts, result, guesses, won) {
     this.attempts = attempts;
     this.result = result;
@@ -36,23 +40,27 @@ $(function () {
     for (let i = 0; i < letters.length; i++) {
         switch(letters[i]) {
             case "N":
-            values += "<div><span class='" + letters[i] + "'><a href='#' onclick='letterClick(\"" + letters[i] + "\"); event.preventDefault()';>" + letters[i] + "</a> </span>";
+            values += "<div><span class='" + letters[i] + "'><a href='#' onclick='letterClickHandler(\"" + letters[i] + "\"); event.preventDefault()';>" + letters[i] + "</a> </span>";
             break;
 
             case "Z":
-            values += "<span class='" + letters[i] + "'><a href='#' onclick='letterClick(\"" + letters[i] + "\"); event.preventDefault()';>" + letters[i] + "</a> </span></div>";
+            values += "<span class='" + letters[i] + "'><a href='#' onclick='letterClickHandler(\"" + letters[i] + "\"); event.preventDefault()';>" + letters[i] + "</a> </span></div>";
             break;
 
             default:
             console.log("default");
-            values += "<span class='" + letters[i] + "'><a href='#' onclick='letterClick(\"" + letters[i] + "\"); event.preventDefault()';>" + letters[i] + "</a> </span>";
+            values += "<span class='" + letters[i] + "'><a href='#' onclick='letterClickHandler(\"" + letters[i] + "\"); event.preventDefault()';>" + letters[i] + "</a> </span>";
         }
         $('.letters').html(values);
     }
 
 })
 
-function letterClick(id) {
+
+/**
+ * @summary Handler after user choose a letter.
+ */
+function letterClickHandler(id) {
     guess = id.toLowerCase();
     $('.letters .' + id + ' a').css({
         "pointer-events": "none",
@@ -85,6 +93,10 @@ function letterClick(id) {
     }
 }
 
+
+/**
+ * @summary Prints the hangman.
+ */
 function printHangMan(nWrong) {
     const headSpot = (nWrong > 0) ? "O" : " ";
     const bodySpot = (nWrong > 1) ? "|" : " ";
@@ -100,6 +112,10 @@ function printHangMan(nWrong) {
     return;
 }
 
+
+/**
+ * @summary Sets defaults for the start of new game.
+ */
 function setUpGame() {
     // choose a new word
     answer = getRandomWord().split('');
@@ -118,13 +134,19 @@ function setUpGame() {
     $('.message').html("");
 }
 
+
+/**
+ * @summary Choose random word from array of words.
+ */
 function getRandomWord() {
     const index = Math.floor(Math.random() * words.length);
     return words[index];
 }
 
 
-
+/**
+ * @summary Prints the state of game after every guess.
+ */
 function printGameState() {
     //Add a console.log here to print the previous guesses.
     //console.log('\n');
@@ -135,6 +157,9 @@ function printGameState() {
 }
 
 
+/**
+ * @summary Checks if the guessed letter is correct and if the collection of letters input by user matches the answer.
+ */
 function checkInputStatus() {
     let str = "";
     let counter = 0;
@@ -163,6 +188,10 @@ function checkInputStatus() {
     return str;
 }
 
+
+/**
+ * @summary Checks if the game is over
+ */
 function checkGameOver() {
     checkInputStatus();
     gameStats = {
@@ -187,6 +216,10 @@ function checkGameOver() {
     return false;
 }
 
+
+/**
+ * @summary Display the Results after game is over.
+ */
 function outputResults() {
     pastGames.push(new Games(gameStats.attempts, gameStats.result, gameStats.guessedLetters));
     if (won) {

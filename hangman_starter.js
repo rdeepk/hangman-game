@@ -21,20 +21,42 @@ let cont = true;
 let won = false;
 let gameStats = {};
 
+/*
+PART 1
 
+Write the pseudocode that represents your game logic here.
+
+Step 1: Set up default values for start of game
+Step 2: Choose a random word
+Step 3: Print Hangman
+Step 4: Let user make a guess
+Step 5: check if it is already guessed
+		if yes : ask for another guess
+		else : add it to the list of past guesses
+			: Check if the guess is correct
+				: if yes : Print Game state
+						: check if the guessed letters match the answer and user has won
+						if yes: User has Won and Game is over
+				: else : Incremet the wrong guesses counter
+						: check if wrong guesses are greater than 6
+						if yes: User has lost and game is over
+							else: go to Step 3
+*/
+
+
+/**
+ * @summary Constructor function to create game object
+ */
 function Games(attempts, result, guesses) {
 	this.attempts = attempts;
 	this.result = result;
 	this.guesses = guesses;
 }
 
-/*
-PART 1
 
-Write the pseudocode that represents your game logic here.
-
-*/
-
+/**
+ * @summary starts the game.
+ */
 function startGame() {
 	setUpGame();
 	while (!checkGameOver()) {
@@ -71,15 +93,12 @@ function startGame() {
 		}
 	}
 	printGameState();
-
-	/*
-		PART 3	
-
-		Log whether or not the game was won or lost here!
-
-	*/
 }
 
+
+/**
+ * @summary Checks if the game is over
+ */
 function checkGameOver() {
 	checkInputStatus();
 	gameStats = {
@@ -100,6 +119,10 @@ function checkGameOver() {
 	return false;
 }
 
+
+/**
+ * @summary Display the Results after game is over.
+ */
 function outputResults() {
 	pastGames.push(new Games(gameStats.attempts, gameStats.result, gameStats.guessedLetters));
 	if(won) {
@@ -111,6 +134,10 @@ function outputResults() {
 	console.log('Your Past Games: ' + JSON.stringify(pastGames));	
 }
 
+
+/**
+ * @summary Prints the state of game after every guess.
+ */
 function printGameState() {
 	//Add a console.log here to print the previous guesses.
 	console.log('\n');
@@ -123,6 +150,9 @@ function printGameState() {
 }
 
 
+/**
+ * @summary Checks if the guessed letter is correct and if the collection of letters input by user matches the answer.
+ */
 function checkInputStatus() {
 	let str = "";
 	let counter = 0;
@@ -157,11 +187,19 @@ function checkInputStatus() {
  =========================================================================================
 */
 
+
+/**
+ * @summary Choose random word from array of words.
+ */
 function getRandomWord() {
 	const index = Math.floor(Math.random() * words.length);
 	return words[index];
 }
 
+
+/**
+ * @summary Prints the hangman.
+ */
 function printHangMan(nWrong) {
 	//Don't worry about the syntax you see here.  The ? operator is a succinct way to write an
 	//if statement that has two results. Think of it as:
@@ -182,6 +220,10 @@ function printHangMan(nWrong) {
 	return;
 }
 
+
+/**
+ * @summary Sets defaults for the start of new game.
+ */
 function setUpGame() {
 	// choose a new word
 	answer = getRandomWord().split('');
