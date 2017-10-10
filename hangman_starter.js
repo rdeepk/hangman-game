@@ -24,7 +24,7 @@ let gameStats = {};
 /*
 PART 1
 
-Write the pseudocode that represents your game logic here.
+Pseudocode that represents game logic.
 
 Step 1: Set up default values for start of game
 Step 2: Choose a random word
@@ -66,8 +66,11 @@ function startGame() {
 		/*
 			PART 2
 
-			Write the logic that will check whether or not the guess the user entered
-			was valid here.
+			Checks to see whether or not the guess the user entered	is valid here.
+				1: check if guess already exist in pastGuesses array.
+				2: If not, add it to pastGuesses
+				3: if the guessed letter does not match with the answer,
+					increment the wrong guesses counter.
 			
 		*/
 		let match = false;
@@ -78,7 +81,7 @@ function startGame() {
 		}
 
 		if (!match) {
-			pastGuesses[pastGuesses.length] = guess;
+			pastGuesses.push(guess);
 			let found;
 			
 			if(answer.indexOf(guess) !== -1) {
@@ -111,7 +114,7 @@ function checkGameOver() {
 		gameStats.result = 'Lost';
 	}
 
-	if ((nWrong > 6) || (won)) {
+	if ((nWrong >= 6) || (won)) {
 		outputResults();
 		return true;
 	}
