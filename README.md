@@ -1,10 +1,6 @@
 # hangman-game
-This is a hangman game application
+This is a hangman game application. It can be played on both terminal and browser.
 
-It can be played on both terminal and browser.
+Use index.html to play in browser and use following command for terminal.
 
-Use index.html to play in browser.
-
-Command for terminal
-
-    node hangman_starter.js
+node hangman_starter.js
