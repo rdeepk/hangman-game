@@ -66,7 +66,7 @@ function startGame() {
         /*
             PART 2
 
-            Checks to see whether or not the guess the user entered	is valid here.
+            Checks to see whether or not the guess the user entered is valid here.
                 1: check if guess already exist in pastGuesses array.
                 2: If not, add it to pastGuesses
                 3: if the guessed letter does not match with the answer,

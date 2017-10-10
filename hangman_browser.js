@@ -107,7 +107,7 @@ function printHangMan(nWrong) {
 
     let str = "";
 
-    basic = " ___ " + "<br>" + " |  | " + "<br>" + " |  " + headSpot + " " + "<br>" + " | " + leftArm + bodySpot + rightArm + "<br>" + " | " + leftLeg + " " + rightLeg;
+    basic = " ___ " + "<br>" + " |&nbsp;&nbsp;| " + "<br>" + " |  " + headSpot + " " + "<br>" + " | " + leftArm + bodySpot + rightArm + "<br>" + " | " + leftLeg + " " + rightLeg;
     $(".hangman").html(basic);
     return;
 }

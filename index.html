@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-		<meta name="author" content="Ramandeep Kaur">
-		<link rel="icon" href="">
-        <title>Hangman Game</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Ramandeep Kaur">
+    <link rel="icon" href="">
+    <title>Hangman Game</title>
 
-        <!-- styles 
-        ======================================= -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="hangman"></div>
-                    <p>Click on it to choose the alphabet</p>
-                    <div class="letters"></div>
-                    <div class="answer-string"></div>
-                    <div class="message"></div>
-                    <div><a href="#" onclick="setUpGame();event.preventDefault();">Start another Game</a></div>
-                    <div class="stats">
-                        <div class="played"></div>
-                        <div class="won"></div>
-                        <div class="lost"></div>
-                    </div>
+    <!-- styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Hangman Game</h1>
+                <div class="hangman"></div>
+                <p>Click on one of the letters to choose the alphabet</p>
+                <div class="letters"></div>
+                <div class="answer-string"></div>
+                <div class="message"></div>
+                <div><a href="#" onclick="setUpGame();event.preventDefault();">Start another Game</a></div>
+                <div class="stats">
+                    <div class="played"></div>
+                    <div class="won"></div>
+                    <div class="lost"></div>
                 </div>
             </div>
         </div>
-    <body>
-        <!--scripts
-        ====================================== -->
+    </div>
+
+    <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script src="hangman_browser.js"></script>
-    </body>
+</body>
 </html>
